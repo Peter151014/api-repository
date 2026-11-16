@@ -1,0 +1,31 @@
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    active: Boolean!
+}
+
+type RequestResponse {
+    message: String!
+}
+
+input UserRequest {
+    name: String!
+    email: String!
+}
+
+input UpdateRequest {
+    id: ID!
+    name: String
+}
+
+type Query {
+    getUsers: [User!]!
+    getUserById(id: ID!): User
+}
+
+type Mutation {
+    createdUser(userRequest: UserRequest!): RequestResponse!
+    updateUser(updateRequest: UpdateRequest!): RequestResponse!
+    deleteUser(id: ID!): RequestResponse!
+}
